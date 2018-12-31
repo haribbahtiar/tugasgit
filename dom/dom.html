@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Form DOM</title>
+        <link rel="stylesheet" href="css/cssform.css" type="text/css">
+        
+        <!-- Bootstrap Core CSS -->
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        
+        <!-- Custom Fonts -->
+        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+        <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+        
+        <!-- Custom CSS -->
+        <link href="css/stylish-portfolio.min.css" rel="stylesheet">
+
+        <script>
+                function masukin(){
+                    //alert("Form sudah disubmit");
+                    var namaValid = /^[a-zA-Z]+(([\'\,\.\- ][a-zA-Z ])?[a-zA-Z]*)*$/;
+                    var nama = data.nama.value;
+                    var email = data.email.value;
+                    var pesan        = '';
+
+                    if (nama == '') {
+                        pesan = 'Nama tidak boleh kosong\n';
+                    }
+                    if (nama != '' && !nama.match(namaValid)) {
+                        pesan += 'Nama tidak valid\n';
+                    }
+                    if(email == ''){
+                        pesan += 'Email tidak boleh kosong\n';
+                    }
+                    if (pesan != '') {
+                        alert('ERORR!!\n'+pesan);
+                        return false;
+                    }
+                    return true;
+                }
+            </script>
+            <script type="text/javascript" src="js/dom.js"></script>
+    </head>
+    <body>
+        <div class="simple-form">
+            <form name="data" id="registration" action="form.php" method="GET" onsubmit="return masukin()">
+                <input type="text" name="nama" id="nama" placeholder="Masukkan Nama Lengkap"><br><br>
+                <input type="email" name="email" id="email" placeholder="Masukkan Email"><br><br>
+                <select id="ph" name="ahli" onchange="infoSelect()">
+                    <option hidden>Pilih Keahlian</option>
+                    <option value="Bagian front-end dari sebuah website adalah bagian yang langsung dilihat oleh user. User juga bisa langsung berinteraksi pada bagian ini. Bagian ini dibangun menggunakan HTML, CSS, dan JavaScript.">Front End</option>
+                    <option value="Back-end adalah bagian belakang layar dari sebuah website. Bahasa pemograman untuk back-end development diantaranya adalah PHP, Ruby, Python, dan banyak lainnya.">Back End</option>
+                    <option value="Full-stack developer bekerja pada bagian front-end dan back-end. Mereka menguasai HTML, CSS, JavaScript, dan satu atau lebih bahasa pemograman back-end.">Full Stack</option>
+                    <option value="Desainer antar muka suatu website">UI / UX Designer</option>
+                    <option value="Bagian pemasaran">Marketing</option>
+                </select><br><br>
+                <textarea name="info" id="info" cols="30" rows="10"></textarea><br>
+                <input type="submit" value="KIRIM" id="butt">
+            </form>
+        </div>
+        
+    </body>
+</html>

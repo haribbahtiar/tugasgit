@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Form Admin</title>
+        <link rel="stylesheet" href="css/cssform.css" type="text/css">
+        
+        <!-- Bootstrap Core CSS -->
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        
+        <!-- Custom Fonts -->
+        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+        <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+        
+        <!-- Custom CSS -->
+        <link href="css/stylish-portfolio.min.css" rel="stylesheet">
+
+        <script>
+                function masukin(){
+                    //alert("Form sudah disubmit");
+                    var namaValid = /^[a-zA-Z]+(([\'\,\.\- ][a-zA-Z ])?[a-zA-Z]*)*$/;
+                    var nama = data.nama.value;
+                    var email = data.email.value;
+                    var password = data.password.value;
+                    var pesan        = '';
+
+                    if (nama == '') {
+                        pesan = 'Nama tidak boleh kosong\n';
+                    }
+                    if (nama != '' && !nama.match(namaValid)) {
+                        pesan += 'Nama tidak valid\n';
+                    }
+                    if(email == ''){
+                        pesan += 'Email tidak boleh kosong\n';
+                    }
+                    if(password == ''){
+                        pesan += 'Password tidak boleh kosong\n';
+                    }
+                    if (pesan != '') {
+                        alert('ERORR!!\n'+pesan);
+                        return false;
+                    }
+                    return true;
+                }
+            </script>
+    </head>
+    <body>
+        <div class="simple-form">
+            <form name="data" id="registration" action="form.php" method="GET" onsubmit="return masukin()">
+                <input type="text" name="nama" id="nama" placeholder="Masukkan Nama Lengkap"><br><br>
+                <input type="email" name="email" id="email" placeholder="Masukkan Email"><br><br>
+                <input type="password" name="password" id="password" placeholder="Masukkan Password"><br><br>
+                <select id="ph">
+                    <option>+62</option>
+                    <option>+021</option>
+                    <option>+024</option>
+                </select>
+                <input type="text" name="mum" id="phone" placeholder="Masukkan Nomer Telepon"><br><br>
+                <input type="radio" name="gender" id="rd"><span id="but">Laki-Laki</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="gender" id="rd"><span id="but">Perempuan</span><br><br>&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="submit" value="KIRIM" id="butt">
+            </form>
+        </div>
+        
+    </body>
+</html>
